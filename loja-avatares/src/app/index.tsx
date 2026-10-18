@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'expo-router';
 import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function TelaInicialHBG() {
+export default function HomeHBG() {
     const roteadorHBG = useRouter();
 
   function comecarHBG() {
@@ -48,7 +48,7 @@ export default function TelaInicialHBG() {
 }
 
 const estilosHBG = StyleSheet.create({
-  containerHBG: { flex: 1, backgroundColor: '#B8D4F0' },
+  containerHBG: { flex: 1, backgroundColor: '#ecf0b8' },
   areaImagemHBG: { flex: 1.3, justifyContent: 'center', alignItems: 'center' },
   imagemHBG: { width: '100%', height: '100%', transform: [{ scale: 1.20 }] },
   areaTextoHBG: { flex: 1, paddingHorizontal: 20, paddingTop: 24 },

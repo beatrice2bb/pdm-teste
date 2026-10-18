@@ -15,15 +15,11 @@ export default function TelaLoginHBG() {
 
   function verificarLoginHBG() {
     if (emailHBG.trim() === '' || senhaHBG.trim() === '') {
-      setErroHBG('Preencha o e-mail e a senha para continuar.');
+      setErroHBG('Preencha o e-mail e/ou senha para continuar.');
       return;
     }
-    if (emailHBG.trim() !== emailCadastradoHBG) {
-      setErroHBG('E-mail incorreto. Confira e tente novamente.');
-      return;
-    }
-    if (senhaHBG !== senhaCadastradaHBG) {
-      setErroHBG('Senha incorreta. Confira e tente novamente.');
+    if ((emailHBG.trim() !== emailCadastradoHBG) || (senhaHBG !== senhaCadastradaHBG)) {
+      setErroHBG('E-mail e/ou senha incorretos.');
       return;
     }
 
@@ -45,7 +41,11 @@ export default function TelaLoginHBG() {
 
       <View style={estilosHBG.painelHBG}>
         <View style={estilosHBG.campoHBG}>
-          <Text style={estilosHBG.iconeHBG}>✉️</Text>
+          <Image
+            style={estilosHBG.iconeHBG}
+            source={require("../../assets/images/Vector.png")}
+            resizeMode="cover"
+          />
           <TextInput
             style={estilosHBG.entradaHBG}
             placeholder="Email"
@@ -58,7 +58,11 @@ export default function TelaLoginHBG() {
         </View>
 
         <View style={estilosHBG.campoHBG}>
-          <Text style={estilosHBG.iconeHBG}>🔒</Text>
+          <Image
+            style={estilosHBG.iconeHBG}
+            source={require("../../assets/images/Lock.png")}
+            resizeMode="cover"
+          />
           <TextInput
             style={estilosHBG.entradaHBG}
             placeholder="Senha"
@@ -80,29 +84,15 @@ export default function TelaLoginHBG() {
 }
 
 const estilosHBG = StyleSheet.create({
-  containerHBG: { flex: 1, backgroundColor: '#B8D4F0' },
-  areaImagemHBG: { flex: 1, overflow: 'hidden' },
+  containerHBG: { flex: 1, backgroundColor: '#722F37' },
+  areaImagemHBG: { overflow: 'visible', height:'60%' },
   imagemHBG: { width: '100%', height: '100%' },
-  painelHBG: {
-    flex: 1,
-    backgroundColor: '#DDEBFA',
-    borderTopLeftRadius: 28,
-    borderTopRightRadius: 28,
-    paddingHorizontal: 24,
-    paddingTop: 32,
-  },
-  campoHBG: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1.5,
-    borderColor: '#1F4E9C',
-    borderRadius: 30,
-    paddingHorizontal: 16,
-    marginBottom: 16,
-  },
-  iconeHBG: { fontSize: 20 },
-  entradaHBG: { flex: 1, paddingVertical: 14, paddingLeft: 10, fontSize: 15, color: '#1B3A6B' },
+  painelHBG: { height:'40%', backgroundColor: '#562329', paddingHorizontal: 24, paddingTop: 80 },
+  campoHBG: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#FFFFFF', borderWidth: 2.5, 
+              borderColor: '#943843', borderRadius: 30, paddingHorizontal: 16, marginBottom: 16 },
+  
+  iconeHBG: {  },
+  entradaHBG: { flex: 1, paddingVertical: 14, paddingLeft: 10, fontSize: 15, color: '#1B3A6B'},
   erroHBG: { color: '#B3261E', fontSize: 14, textAlign: 'center', marginBottom: 12 },
   botaoHBG: { backgroundColor: '#1F4E9C', borderRadius: 30, paddingVertical: 16, alignItems: 'center', marginTop: 8 },
   textoBotaoHBG: { color: '#FFFFFF', fontSize: 16, fontWeight: 'bold' },
