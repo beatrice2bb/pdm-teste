@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Image, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { useRouter } from 'expo-router';
 
 export default function TelaLoginHBG() {
+  const roteadorHBG = useRouter();
+
   // Credenciais cadastradas previamente no código
   const [emailCadastradoHBG] = useState<string>('hbg@loja.com');
   const [senhaCadastradaHBG] = useState<string>('123456');
@@ -9,11 +12,8 @@ export default function TelaLoginHBG() {
   const [emailHBG, setEmailHBG] = useState<string>('');
   const [senhaHBG, setSenhaHBG] = useState<string>('');
   const [erroHBG, setErroHBG] = useState<string>('');
-  const [sucessoHBG, setSucessoHBG] = useState<boolean>(false);
 
   function verificarLoginHBG() {
-    setSucessoHBG(false);
-
     if (emailHBG.trim() === '' || senhaHBG.trim() === '') {
       setErroHBG('Preencha o e-mail e a senha para continuar.');
       return;
@@ -28,7 +28,7 @@ export default function TelaLoginHBG() {
     }
 
     setErroHBG('');
-    setSucessoHBG(true); // Depois vamos trocar isso por ir para a lista de avatares
+    roteadorHBG.replace('/cardapio');
   }
 
   return (
@@ -70,7 +70,6 @@ export default function TelaLoginHBG() {
         </View>
 
         {erroHBG !== '' && <Text style={estilosHBG.erroHBG}>{erroHBG}</Text>}
-        {sucessoHBG && <Text style={estilosHBG.sucessoHBG}>Login realizado com sucesso!</Text>}
 
         <TouchableOpacity style={estilosHBG.botaoHBG} onPress={verificarLoginHBG}>
           <Text style={estilosHBG.textoBotaoHBG}>Entrar</Text>
@@ -105,7 +104,6 @@ const estilosHBG = StyleSheet.create({
   iconeHBG: { fontSize: 20 },
   entradaHBG: { flex: 1, paddingVertical: 14, paddingLeft: 10, fontSize: 15, color: '#1B3A6B' },
   erroHBG: { color: '#B3261E', fontSize: 14, textAlign: 'center', marginBottom: 12 },
-  sucessoHBG: { color: '#1E7B34', fontSize: 14, textAlign: 'center', marginBottom: 12 },
   botaoHBG: { backgroundColor: '#1F4E9C', borderRadius: 30, paddingVertical: 16, alignItems: 'center', marginTop: 8 },
   textoBotaoHBG: { color: '#FFFFFF', fontSize: 16, fontWeight: 'bold' },
 });

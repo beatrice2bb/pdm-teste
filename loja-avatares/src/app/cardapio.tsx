@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import {
   View,
@@ -14,37 +13,37 @@ import CardItemLoja from '../components/CardItemLoja';
 const itens = [
   {
     id: '1',
-    imagem: require('../assets/Kogama1.png'),
+    imagem: require('../../assets/Kogama1.png'),
     nome: 'Menino',
     preco: 480,
   },
   {
     id: '2',
-    imagem: require('../assets/Kogama2.png'),
+    imagem: require('../../assets/Kogama2.png'),
     nome: 'Labubu',
     preco: 320,
   },
   {
     id: '3',
-    imagem: require('../assets/Kogama3.png'),
+    imagem: require('../../assets/Kogama3.png'),
     nome: 'Zumbi',
     preco: 550,
   },
   {
     id: '4',
-    imagem: require('../assets/Kogama4.png'),
+    imagem: require('../../assets/Kogama4.png'),
     nome: 'CLT',
     preco: 700,
   },
   {
     id: '5',
-    imagem: require('../assets/Kogama5.png'),
+    imagem: require('../../assets/Kogama5.png'),
     nome: 'Arara do DB',
     preco: 850,
   },
   {
     id: '6',
-    imagem: require('../assets/Kogama6.png'),
+    imagem: require('../../assets/Kogama6.png'),
     nome: 'Chapeuzinho',
     preco: 1000,
   },
