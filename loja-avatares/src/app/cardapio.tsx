@@ -106,7 +106,7 @@ export default function Cardapio() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#080F1F',
+    backgroundColor: '#1F4E9C',
   },
 
   conteudo: {

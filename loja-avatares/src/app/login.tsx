@@ -84,12 +84,12 @@ export default function TelaLoginHBG() {
 }
 
 const estilosHBG = StyleSheet.create({
-  containerHBG: { flex: 1, backgroundColor: '#722F37' },
+  containerHBG: { flex: 1, backgroundColor: '#ecf0b8' },
   areaImagemHBG: { overflow: 'visible', height:'60%' },
   imagemHBG: { width: '100%', height: '100%' },
-  painelHBG: { height:'40%', backgroundColor: '#562329', paddingHorizontal: 24, paddingTop: 80 },
+  painelHBG: { height:'40%', backgroundColor: '#ecf0b8', paddingHorizontal: 24, paddingTop: 80 },
   campoHBG: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#FFFFFF', borderWidth: 2.5, 
-              borderColor: '#943843', borderRadius: 30, paddingHorizontal: 16, marginBottom: 16 },
+              borderColor: '#1F4E9C', borderRadius: 30, paddingHorizontal: 16, marginBottom: 16 },
   
   iconeHBG: {  },
   entradaHBG: { flex: 1, paddingVertical: 14, paddingLeft: 10, fontSize: 15, color: '#1B3A6B'},
