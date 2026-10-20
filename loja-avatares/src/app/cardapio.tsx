@@ -9,45 +9,8 @@ import {
 
 import Cabecalho from '../components/Cabecalho';
 import CardItemLoja from '../components/CardItemLoja';
+import { itens } from '../data/itens';
 
-const itens = [
-  {
-    id: '1',
-    imagem: require('../../assets/Kogama1.png'),
-    nome: 'Menino',
-    preco: 480,
-  },
-  {
-    id: '2',
-    imagem: require('../../assets/Kogama2.png'),
-    nome: 'Labubu',
-    preco: 320,
-  },
-  {
-    id: '3',
-    imagem: require('../../assets/Kogama3.png'),
-    nome: 'Zumbi',
-    preco: 550,
-  },
-  {
-    id: '4',
-    imagem: require('../../assets/Kogama4.png'),
-    nome: 'CLT',
-    preco: 700,
-  },
-  {
-    id: '5',
-    imagem: require('../../assets/Kogama5.png'),
-    nome: 'Arara do DB',
-    preco: 850,
-  },
-  {
-    id: '6',
-    imagem: require('../../assets/Kogama6.png'),
-    nome: 'Chapeuzinho',
-    preco: 1000,
-  },
-];
 
 const imagemFundo = {
   uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm95FMKOs5cztSKKOa3_3tyrcrGqzse8POfL5YrxwEugqPpYC1O1hH1W8&s=10',

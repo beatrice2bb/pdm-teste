@@ -1,98 +1,104 @@
-import React, { useState } from 'react';
-import { Image, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { useState } from 'react';
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  FlatList,
+  ImageBackground,
+} from 'react-native';
 import { useRouter } from 'expo-router';
 
-export default function LoginHBG() {
-  const routerHBG = useRouter();
+import Cabecalho from '../components/Cabecalho';
+import CardItemLoja from '../components/CardItemLoja';
+import { itens } from '../data/itens';
 
-  const [emailCadastradoHBG] = useState<string>('hbg@loja.com');
-  const [senhaCadastradaHBG] = useState<string>('123456');
+const imagemFundo = {
+  uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm95FMKOs5cztSKKOa3_3tyrcrGqzse8POfL5YrxwEugqPpYC1O1hH1W8&s=10',
+};
 
-  const [emailHBG, setEmailHBG] = useState<string>('');
-  const [senhaHBG, setSenhaHBG] = useState<string>('');
-  const [erroHBG, setErroHBG] = useState<string>('');
+export default function Cardapio() {
+  const router = useRouter();
+  const [pesquisa, setPesquisa] = useState('');
 
-  function verificarLoginHBG() {
-    if (emailHBG.trim() === '' || senhaHBG.trim() === '') {
-      setErroHBG('Preencha o e-mail e/ou senha para continuar.');
-      return;
-    }
-    if ((emailHBG.trim() !== emailCadastradoHBG) || (senhaHBG !== senhaCadastradaHBG)) {
-      setErroHBG('E-mail e/ou senha incorretos.');
-      return;
-    }
-
-    setErroHBG('');
-    routerHBG.replace('/cardapio');
-  }
+  const itensFiltrados = itens.filter((item) =>
+    item.nome.toLowerCase().includes(pesquisa.trim().toLowerCase())
+  );
 
   return (
-    <View style={estilosHBG.containerHBG}>
-      <StatusBar barStyle="dark-content" />
+    <ImageBackground
+      source={imagemFundo}
+      style={styles.container}
+      resizeMode="cover"
+    >
+      <View style={styles.conteudo}>
+        <Cabecalho fotoPerfil="https://voxnews.com.br/wp-content/uploads/2017/04/unnamed-300x300.png" />
 
-      <View style={estilosHBG.areaImagemHBG}>
-        <Image
-          source={require('../../assets/images/pagina-2.png')}
-          style={estilosHBG.imagemHBG}
-          resizeMode="cover"
+        <View style={styles.containerPesquisa}>
+          <TextInput
+            style={styles.inputPesquisa}
+            placeholder="Pesquisar itens..."
+            placeholderTextColor="#94A3B8"
+            value={pesquisa}
+            onChangeText={setPesquisa}
+            autoCapitalize="none"
+            clearButtonMode="while-editing"
+          />
+        </View>
+
+        <FlatList
+          data={itensFiltrados}
+          keyExtractor={(item) => item.id}
+          numColumns={2}
+          columnWrapperStyle={styles.linha}
+          contentContainerStyle={styles.lista}
+          keyboardShouldPersistTaps="handled"
+          renderItem={({ item }) => (
+            <CardItemLoja
+              imagem={item.imagem}
+              nome={item.nome}
+              preco={item.preco}
+              onPress={() =>
+                router.push({ pathname: '/detalhes', params: { id: item.id } })
+              }
+            />
+          )}
         />
       </View>
-
-      <View style={estilosHBG.painelHBG}>
-        <View style={estilosHBG.campoHBG}>
-          <Image
-            style={estilosHBG.iconeHBG}
-            source={require("../../assets/images/Vector.png")}
-            resizeMode="cover"
-          />
-          <TextInput
-            style={estilosHBG.entradaHBG}
-            placeholder="Email"
-            placeholderTextColor="#7FA3CC"
-            autoCapitalize="none"
-            keyboardType="email-address"
-            value={emailHBG}
-            onChangeText={setEmailHBG}
-          />
-        </View>
-
-        <View style={estilosHBG.campoHBG}>
-          <Image
-            style={estilosHBG.iconeHBG}
-            source={require("../../assets/images/Lock.png")}
-            resizeMode="cover"
-          />
-          <TextInput
-            style={estilosHBG.entradaHBG}
-            placeholder="Senha"
-            placeholderTextColor="#7FA3CC"
-            secureTextEntry
-            value={senhaHBG}
-            onChangeText={setSenhaHBG}
-          />
-        </View>
-
-        {erroHBG !== '' && <Text style={estilosHBG.erroHBG}>{erroHBG}</Text>}
-
-        <TouchableOpacity style={estilosHBG.botaoHBG} onPress={verificarLoginHBG}>
-          <Text style={estilosHBG.textoBotaoHBG}>Entrar</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </ImageBackground>
   );
 }
 
-const estilosHBG = StyleSheet.create({
-  containerHBG: { flex: 1, backgroundColor: '#ecf0b8' },
-  areaImagemHBG: { overflow: 'visible', height:'60%' },
-  imagemHBG: { width: '100%', height: '100%' },
-  painelHBG: { height:'40%', backgroundColor: '#ecf0b8', paddingHorizontal: 24, paddingTop: 80 },
-  campoHBG: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#FFFFFF', borderWidth: 2.5, 
-              borderColor: '#1F4E9C', borderRadius: 30, paddingHorizontal: 16, marginBottom: 16 },
-  iconeHBG: {  },
-  entradaHBG: { flex: 1, paddingVertical: 14, paddingLeft: 10, fontSize: 15, color: '#1B3A6B'},
-  erroHBG: { color: '#B3261E', fontSize: 14, textAlign: 'center', marginBottom: 12 },
-  botaoHBG: { backgroundColor: '#1F4E9C', borderRadius: 30, paddingVertical: 16, alignItems: 'center',
-              marginTop: 8 },
-  textoBotaoHBG: { color: '#FFFFFF', fontSize: 16, fontWeight: 'bold' },
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#1F4E9C',
+  },
+  conteudo: {
+    flex: 1,
+    backgroundColor: 'rgba(5, 14, 65, 0.2)',
+  },
+  containerPesquisa: {
+    marginHorizontal: 16,
+    marginTop: 12,
+    marginBottom: 14,
+    backgroundColor: '#ffffff',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#ffffff',
+    paddingHorizontal: 14,
+    justifyContent: 'center',
+  },
+  inputPesquisa: {
+    height: 46,
+    fontSize: 16,
+    color: '#610000',
+  },
+  lista: {
+    paddingHorizontal: 10,
+    paddingBottom: 20,
+    gap: 12,
+  },
+  linha: {
+    justifyContent: 'space-between',
+  },
 });
