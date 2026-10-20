@@ -3,11 +3,7 @@ import { useRouter } from 'expo-router';
 import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function HomeHBG() {
-    const roteadorHBG = useRouter();
-
-  function comecarHBG() {
-    roteadorHBG.push('/login');
-  }
+    const routerHBG = useRouter();
 
   return (
     <View style={estilosHBG.containerHBG}>
@@ -33,7 +29,7 @@ export default function HomeHBG() {
           <View style={estilosHBG.pontoAtivoHBG} />
         </View>
 
-        <TouchableOpacity style={estilosHBG.botaoHBG} onPress={comecarHBG}>
+        <TouchableOpacity style={estilosHBG.botaoHBG} onPress={() => routerHBG.push('/login')}>
           <Text style={estilosHBG.textoBotaoHBG}>Começar</Text>
         </TouchableOpacity>
 

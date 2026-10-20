@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { Image, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useRouter } from 'expo-router';
 
-export default function TelaLoginHBG() {
-  const roteadorHBG = useRouter();
+export default function LoginHBG() {
+  const routerHBG = useRouter();
 
-  // Credenciais cadastradas previamente no código
   const [emailCadastradoHBG] = useState<string>('hbg@loja.com');
   const [senhaCadastradaHBG] = useState<string>('123456');
 
@@ -24,7 +23,7 @@ export default function TelaLoginHBG() {
     }
 
     setErroHBG('');
-    roteadorHBG.replace('/cardapio');
+    routerHBG.replace('/cardapio');
   }
 
   return (
@@ -90,10 +89,10 @@ const estilosHBG = StyleSheet.create({
   painelHBG: { height:'40%', backgroundColor: '#ecf0b8', paddingHorizontal: 24, paddingTop: 80 },
   campoHBG: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#FFFFFF', borderWidth: 2.5, 
               borderColor: '#1F4E9C', borderRadius: 30, paddingHorizontal: 16, marginBottom: 16 },
-  
   iconeHBG: {  },
   entradaHBG: { flex: 1, paddingVertical: 14, paddingLeft: 10, fontSize: 15, color: '#1B3A6B'},
   erroHBG: { color: '#B3261E', fontSize: 14, textAlign: 'center', marginBottom: 12 },
-  botaoHBG: { backgroundColor: '#1F4E9C', borderRadius: 30, paddingVertical: 16, alignItems: 'center', marginTop: 8 },
+  botaoHBG: { backgroundColor: '#1F4E9C', borderRadius: 30, paddingVertical: 16, alignItems: 'center',
+              marginTop: 8 },
   textoBotaoHBG: { color: '#FFFFFF', fontSize: 16, fontWeight: 'bold' },
 });
