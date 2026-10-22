@@ -1,45 +1,44 @@
-
 import React from 'react';
 import {Text, StyleSheet, Image, TouchableOpacity, ImageSourcePropType, } from 'react-native';
 
-type PropsCard = {
+type PropsCardHBG = {
   imagem: ImageSourcePropType;
   nome: string;
   preco: number;
   onPress?: () => void;
 };
 
-export default function CardItemLoja({
-  imagem,
-  nome,
-  preco,
-  onPress,
-}: PropsCard) {
+export default function CardItemLojaHBG({
+  imagem: imagemHBG,
+  nome: nomeHBG,
+  preco: precoHBG,
+  onPress: onPressHBG,
+}: PropsCardHBG) {
   return (
     <TouchableOpacity
-      style={styles.container}
-      onPress={onPress}
+      style={estilosHBG.containerHBG}
+      onPress={onPressHBG}
       activeOpacity={0.85}
     >
       <Image
-        source={imagem}
-        style={styles.imagemCard}
+        source={imagemHBG}
+        style={estilosHBG.imagemCardHBG}
         resizeMode="contain"
       />
 
-      <Text style={styles.textoCard} numberOfLines={1}>
-        {nome}
+      <Text style={estilosHBG.textoCardHBG} numberOfLines={1}>
+        {nomeHBG}
       </Text>
 
-      <Text style={styles.preco}>
-        {preco} moedas
+      <Text style={estilosHBG.precoHBG}>
+        {precoHBG} moedas
       </Text>
     </TouchableOpacity>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
+const estilosHBG = StyleSheet.create({
+  containerHBG: {
     width: '48%',
     padding: 10,
     backgroundColor: '#100022',
@@ -49,20 +48,20 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
-  imagemCard: {
+  imagemCardHBG: {
     width: '100%',
     height: 130,
     backgroundColor: '#1FB6E0',
     borderRadius: 8,
   },
 
-  textoCard: {
+  textoCardHBG: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#ffffff',
   },
 
-  preco: {
+  precoHBG: {
     fontSize: 14,
     color: '#ffd900',
     fontWeight: 'bold',

@@ -10,55 +10,55 @@ import { useRouter } from 'expo-router';
 
 import Cabecalho from '../components/Cabecalho';
 import CardItemLoja from '../components/CardItemLoja';
-import { itens } from '../data/itens';
+import { itens as itensHBG } from '../data/itens';
 
-const imagemFundo = {
+const imagemFundoHBG = {
   uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm95FMKOs5cztSKKOa3_3tyrcrGqzse8POfL5YrxwEugqPpYC1O1hH1W8&s=10',
 };
 
-export default function Cardapio() {
-  const router = useRouter();
-  const [pesquisa, setPesquisa] = useState('');
+export default function CardapioHBG() {
+  const routerHBG = useRouter();
+  const [pesquisaHBG, setPesquisaHBG] = useState('');
 
-  const itensFiltrados = itens.filter((item) =>
-    item.nome.toLowerCase().includes(pesquisa.trim().toLowerCase())
+  const itensFiltradosHBG = itensHBG.filter((itemHBG) =>
+    itemHBG.nome.toLowerCase().includes(pesquisaHBG.trim().toLowerCase())
   );
 
   return (
     <ImageBackground
-      source={imagemFundo}
-      style={styles.container}
+      source={imagemFundoHBG}
+      style={estilosHBG.containerHBG}
       resizeMode="cover"
     >
-      <View style={styles.conteudo}>
+      <View style={estilosHBG.conteudoHBG}>
         <Cabecalho fotoPerfil="https://voxnews.com.br/wp-content/uploads/2017/04/unnamed-300x300.png" />
 
-        <View style={styles.containerPesquisa}>
+        <View style={estilosHBG.containerPesquisaHBG}>
           <TextInput
-            style={styles.inputPesquisa}
+            style={estilosHBG.inputPesquisaHBG}
             placeholder="Pesquisar itens..."
             placeholderTextColor="#94A3B8"
-            value={pesquisa}
-            onChangeText={setPesquisa}
+            value={pesquisaHBG}
+            onChangeText={setPesquisaHBG}
             autoCapitalize="none"
             clearButtonMode="while-editing"
           />
         </View>
 
         <FlatList
-          data={itensFiltrados}
-          keyExtractor={(item) => item.id}
+          data={itensFiltradosHBG}
+          keyExtractor={(itemHBG) => itemHBG.id}
           numColumns={2}
-          columnWrapperStyle={styles.linha}
-          contentContainerStyle={styles.lista}
+          columnWrapperStyle={estilosHBG.linhaHBG}
+          contentContainerStyle={estilosHBG.listaHBG}
           keyboardShouldPersistTaps="handled"
-          renderItem={({ item }) => (
+          renderItem={({ item: itemHBG }) => (
             <CardItemLoja
-              imagem={item.imagem}
-              nome={item.nome}
-              preco={item.preco}
+              imagem={itemHBG.imagem}
+              nome={itemHBG.nome}
+              preco={itemHBG.preco}
               onPress={() =>
-                router.push({ pathname: '/detalhes', params: { id: item.id } })
+                routerHBG.push({ pathname: '/detalhes', params: { id: itemHBG.id } })
               }
             />
           )}
@@ -68,16 +68,16 @@ export default function Cardapio() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
+const estilosHBG = StyleSheet.create({
+  containerHBG: {
     flex: 1,
     backgroundColor: '#1F4E9C',
   },
-  conteudo: {
+  conteudoHBG: {
     flex: 1,
     backgroundColor: 'rgba(5, 14, 65, 0.2)',
   },
-  containerPesquisa: {
+  containerPesquisaHBG: {
     marginHorizontal: 16,
     marginTop: 12,
     marginBottom: 14,
@@ -88,17 +88,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     justifyContent: 'center',
   },
-  inputPesquisa: {
+  inputPesquisaHBG: {
     height: 46,
     fontSize: 16,
     color: '#610000',
   },
-  lista: {
+  listaHBG: {
     paddingHorizontal: 10,
     paddingBottom: 20,
     gap: 12,
   },
-  linha: {
+  linhaHBG: {
     justifyContent: 'space-between',
   },
 });

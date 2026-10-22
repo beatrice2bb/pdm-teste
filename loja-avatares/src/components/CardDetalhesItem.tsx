@@ -8,7 +8,7 @@ import {
   ImageSourcePropType,
 } from 'react-native';
 
-type PropsDetalhes = {
+type PropsDetalhesHBG = {
   imagem: ImageSourcePropType;
   nome: string;
   descricao: string;
@@ -18,63 +18,63 @@ type PropsDetalhes = {
   onComprar?: () => void;
 };
 
-export default function CardDetalhesItem({
-  imagem,
-  nome,
-  descricao,
-  preco,
-  fotoPerfil,
-  onVoltar,
-  onComprar,
-}: PropsDetalhes) {
+export default function CardDetalhesItemHBG({
+  imagem: imagemHBG,
+  nome: nomeHBG,
+  descricao: descricaoHBG,
+  preco: precoHBG,
+  fotoPerfil: fotoPerfilHBG,
+  onVoltar: onVoltarHBG,
+  onComprar: onComprarHBG,
+}: PropsDetalhesHBG) {
   return (
-    <View style={styles.container}>
-      <View style={styles.areaImagem}>
-        <Image source={imagem} style={styles.imagem} resizeMode="contain" />
+    <View style={estilosHBG.containerHBG}>
+      <View style={estilosHBG.areaImagemHBG}>
+        <Image source={imagemHBG} style={estilosHBG.imagemHBG} resizeMode="contain" />
 
-        <TouchableOpacity style={styles.botaoVoltar} onPress={onVoltar}>
-          <Text style={styles.textoVoltar}>←</Text>
+        <TouchableOpacity style={estilosHBG.botaoVoltarHBG} onPress={onVoltarHBG}>
+          <Text style={estilosHBG.textoVoltarHBG}>←</Text>
         </TouchableOpacity>
 
-        <Image source={{ uri: fotoPerfil }} style={styles.foto} />
+        <Image source={{ uri: fotoPerfilHBG }} style={estilosHBG.fotoHBG} />
       </View>
 
-      <View style={styles.info}>
-        <Text style={styles.nome}>{nome}</Text>
-        <Text style={styles.descricao}>{descricao}</Text>
-        <Text style={styles.preco}>{preco} moedas</Text>
+      <View style={estilosHBG.infoHBG}>
+        <Text style={estilosHBG.nomeHBG}>{nomeHBG}</Text>
+        <Text style={estilosHBG.descricaoHBG}>{descricaoHBG}</Text>
+        <Text style={estilosHBG.precoHBG}>{precoHBG} moedas</Text>
 
         <TouchableOpacity
-          style={styles.botaoComprar}
-          onPress={onComprar}
+          style={estilosHBG.botaoComprarHBG}
+          onPress={onComprarHBG}
           activeOpacity={0.85}
         >
-          <Text style={styles.textoComprar}>Comprar</Text>
+          <Text style={estilosHBG.textoComprarHBG}>Comprar</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
+const estilosHBG = StyleSheet.create({
+  containerHBG: {
     flex: 1,
     backgroundColor: '#100022',
   },
 
-  areaImagem: {
+  areaImagemHBG: {
     height: '55%',
     backgroundColor: '#1FB6E0',
     justifyContent: 'center',
     alignItems: 'center',
   },
 
-  imagem: {
+  imagemHBG: {
     width: '100%',
     height: '100%',
   },
 
-  botaoVoltar: {
+  botaoVoltarHBG: {
     position: 'absolute',
     top: 40,
     left: 20,
@@ -86,13 +86,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  textoVoltar: {
+  textoVoltarHBG: {
     fontSize: 24,
     color: '#ffffff',
     fontWeight: 'bold',
   },
 
-  foto: {
+  fotoHBG: {
     position: 'absolute',
     top: 40,
     right: 20,
@@ -103,30 +103,30 @@ const styles = StyleSheet.create({
     borderColor: '#ffffff',
   },
 
-  info: {
+  infoHBG: {
     flex: 1,
     padding: 20,
     gap: 10,
   },
 
-  nome: {
+  nomeHBG: {
     fontSize: 28,
     fontWeight: 'bold',
     color: '#ffffff',
   },
 
-  descricao: {
+  descricaoHBG: {
     fontSize: 16,
     color: '#dadada',
   },
 
-  preco: {
+  precoHBG: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#ffd900',
   },
 
-  botaoComprar: {
+  botaoComprarHBG: {
     marginTop: 'auto',
     backgroundColor: '#ffd900',
     paddingVertical: 14,
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  textoComprar: {
+  textoComprarHBG: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#100022',

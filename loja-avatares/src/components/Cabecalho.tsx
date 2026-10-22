@@ -1,25 +1,25 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
 
-type PropsCabecalho = {
+type PropsCabecalhoHBG = {
   fotoPerfil: string;
 };
 
-export default function Cabecalho({fotoPerfil}: PropsCabecalho) {
+export default function CabecalhoHBG({fotoPerfil: fotoPerfilHBG}: PropsCabecalhoHBG) {
   return (
-    <View style={styles.container}>
-      <View style={styles.textos}>
-        <Text style={styles.titulo}>Bem-vindo de volta</Text>
-        <Text style={styles.subtitulo}>Descubra avatares</Text>
+    <View style={estilosHBG.containerHBG}>
+      <View style={estilosHBG.textosHBG}>
+        <Text style={estilosHBG.tituloHBG}>Bem-vindo de volta</Text>
+        <Text style={estilosHBG.subtituloHBG}>Descubra avatares</Text>
       </View>
 
-      <Image source={{uri: fotoPerfil}} style={styles.foto} />
+      <Image source={{uri: fotoPerfilHBG}} style={estilosHBG.fotoHBG} />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
+const estilosHBG = StyleSheet.create({
+  containerHBG: {
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -30,22 +30,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#0F1626',
   },
 
-  textos: {
+  textosHBG: {
     gap: 4,
   },
 
-  titulo: {
+  tituloHBG: {
     fontSize: 28,
     fontWeight: 'bold',
     color: '#f3f3f3',
   },
 
-  subtitulo: {
+  subtituloHBG: {
     fontSize: 16,
     color: '#dadada',
   },
 
-  foto: {
+  fotoHBG: {
     width: 48,
     height: 48,
     borderRadius: 24,
